@@ -1,7 +1,12 @@
-import React from "react";
+import ArticleTable from "./components/ArticleTable";
+import { GlobalProvider } from "./content/GlobalContext";
 
 const App = () => {
-  return <div>app</div>;
+  return (
+    <GlobalProvider>
+      <ArticleTable />
+    </GlobalProvider>
+  );
 };
 
 export default App;
