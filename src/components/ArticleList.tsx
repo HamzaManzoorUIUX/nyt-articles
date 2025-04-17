@@ -1,7 +1,8 @@
 import { FC, useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../content/GlobalContext";
 import { I_Article } from "../Interfaces";
-import ArticleRow from "./ArticleRow";
+import ArticleCard from "./ArticleCard";
+import ArticleView from "./ArticleView";
 
 const ArticleTable: FC = () => {
   const [period, setPeriod] = useState<1 | 7 | 30>(1);
@@ -89,30 +90,13 @@ const ArticleTable: FC = () => {
             </svg>
           </div>
         )}
-        <table className="min-w-full divide-y divide-gray-400">
-          <thead className="bg-gray-100">
-            <tr>
-              <td className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
-                No.
-              </td>
-              <td className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
-                Title
-              </td>
-              <td className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
-                Tags
-              </td>
-              <td className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
-                Publish date
-              </td>
-            </tr>
-          </thead>
-          <tbody>
-            {articles.map((article: I_Article, index: number) => (
-              <ArticleRow key={article?.id} article={article} index={index} />
-            ))}
-          </tbody>
-        </table>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {articles.map((article: I_Article) => (
+            <ArticleCard key={article?.id} article={article} />
+          ))}
+        </div>
       </div>
+      <ArticleView />
     </div>
   );
 };

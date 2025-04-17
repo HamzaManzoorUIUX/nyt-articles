@@ -1,4 +1,4 @@
-import ArticleTable from "./components/ArticleTable";
+import ArticleList from "./components/ArticleList";
 import { GlobalProvider } from "./content/GlobalContext";
 
 const App = () => {
@@ -6,7 +6,7 @@ const App = () => {
     <GlobalProvider>
       <div className="container mx-auto">
         <h1 className="text-4xl mb-4">Articles Table</h1>
-        <ArticleTable />
+        <ArticleList />
       </div>
     </GlobalProvider>
   );
