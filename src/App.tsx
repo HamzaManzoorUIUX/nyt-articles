@@ -4,7 +4,10 @@ import { GlobalProvider } from "./content/GlobalContext";
 const App = () => {
   return (
     <GlobalProvider>
-      <ArticleTable />
+      <div className="container mx-auto">
+        <h1 className="text-4xl mb-4">Articles Table</h1>
+        <ArticleTable />
+      </div>
     </GlobalProvider>
   );
 };
