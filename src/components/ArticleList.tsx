@@ -1,16 +1,17 @@
 import { FC, useContext, useEffect, useState } from "react";
-import { GlobalContext } from "../content/GlobalContext";
+import { GlobalContext } from "../context/GlobalContext";
 import { I_Article } from "../Interfaces";
 import ArticleCard from "./ArticleCard";
 import ArticleView from "./ArticleView";
 
-const ArticleTable: FC = () => {
+const ArticleList: FC = () => {
   const [period, setPeriod] = useState<1 | 7 | 30>(1);
   const { articles, loading, getArticles } = useContext(GlobalContext);
+
   useEffect(() => {
+    // if (process.env.NODE_ENV !== "test")
     getArticles(period);
   }, [period, getArticles]);
-  console.log("articles", articles);
 
   return (
     <div className="overflow-x-auto">
@@ -31,7 +32,11 @@ const ArticleTable: FC = () => {
       </div>
       <div className="relative">
         {loading && (
-          <div className="flex justify-center items-center fixed inset-0 bg-[#ffffff88]">
+          <div
+            className="flex justify-center items-center fixed inset-0 bg-[#ffffff88]"
+            role="status"
+            aria-label="Loading"
+          >
             <svg
               version="1.1"
               id="L7"
@@ -40,7 +45,7 @@ const ArticleTable: FC = () => {
               y="0px"
               width={100}
               viewBox="0 0 100 100"
-              enable-background="new 0 0 100 100"
+              enableBackground="new 0 0 100 100"
             >
               <path
                 fill="#000"
@@ -101,4 +106,4 @@ const ArticleTable: FC = () => {
   );
 };
 
-export default ArticleTable;
+export default ArticleList;

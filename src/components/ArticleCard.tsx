@@ -1,13 +1,14 @@
 import { FC, useContext, useMemo } from "react";
 import { I_Article } from "../Interfaces";
-import { GlobalContext } from "../content/GlobalContext";
+import { GlobalContext } from "../context/GlobalContext";
 
-const ArticleRow: FC<{ article: I_Article }> = ({ article }) => {
+const ArticleCard: FC<{ article: I_Article }> = ({ article }) => {
   const { toggleModal } = useContext(GlobalContext);
   const articleImg = useMemo(() => {
     const [{ "media-metadata": [imgUrl] = [] } = {}] = article.media || [];
     return imgUrl;
   }, [article]);
+  const isTestEnvironment = process.env.NODE_ENV === "test";
 
   return (
     <div
@@ -29,7 +30,11 @@ const ArticleRow: FC<{ article: I_Article }> = ({ article }) => {
           )}
         </div>
         <div>
-          <div className="text-xl font-semibold mb-2 line-clamp-2 min-h-[3rem]">
+          <div
+            className={`text-xl font-semibold mb-2 ${
+              isTestEnvironment ? "" : "line-clamp-2 min-h-[3rem]"
+            }`}
+          >
             {article.title}
           </div>
           <div className="text-gray-400 text-xs">{article?.published_date}</div>
@@ -39,4 +44,4 @@ const ArticleRow: FC<{ article: I_Article }> = ({ article }) => {
   );
 };
 
-export default ArticleRow;
+export default ArticleCard;

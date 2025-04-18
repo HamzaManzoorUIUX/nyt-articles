@@ -1,5 +1,5 @@
 import { useContext, useMemo } from "react";
-import { GlobalContext } from "../content/GlobalContext";
+import { GlobalContext } from "../context/GlobalContext";
 
 const ArticleView = () => {
   const { selectedArticle, showModal, toggleModal } = useContext(GlobalContext);

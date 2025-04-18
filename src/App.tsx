@@ -1,5 +1,5 @@
 import ArticleList from "./components/ArticleList";
-import { GlobalProvider } from "./content/GlobalContext";
+import { GlobalProvider } from "./context/GlobalContext";
 
 const App = () => {
   return (

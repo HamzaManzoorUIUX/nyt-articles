@@ -14,8 +14,8 @@ interface I_ContextInitialData {
   articles: I_Article[];
   loading: boolean;
   showModal: boolean;
-  selectedArticleID: number;
-  selectedArticle: I_Article | undefined;
+  selectedArticleID: number | null;
+  selectedArticle: I_Article | undefined | null;
   toggleModal: (id?: number) => void;
   getArticles: (period: 1 | 7 | 30) => void;
 }
